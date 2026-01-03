@@ -21,18 +21,18 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    name: 'Premium ENT Clinic',
+    name: siteConfig.name,
     description: 'Premier ENT clinic offering comprehensive ear, nose, throat, hearing, and allergy care with experienced specialists and modern facilities.',
-    url: 'https://jaywebstudio.in',
-    telephone: '+1-234-567-8900',
-    email: 'info@entclinic.com',
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phone,
+    email: siteConfig.contact.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Medical Plaza, Healthcare District',
-      addressLocality: 'New York',
-      addressRegion: 'NY',
-      postalCode: '10001',
-      addressCountry: 'US'
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.state,
+      postalCode: siteConfig.address.zip,
+      addressCountry: siteConfig.address.country
     },
     openingHoursSpecification: [
       {

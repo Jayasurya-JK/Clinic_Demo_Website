@@ -15,6 +15,14 @@ interface SEOProps {
   noindex?: boolean
 }
 
+// Get base URL from environment or use default
+const getBaseUrl = () => {
+  if (typeof window !== 'undefined') {
+    return window.location.origin
+  }
+  return process.env.NEXT_PUBLIC_SITE_URL || 'https://jaywebstudio.in'
+}
+
 export function generateSEOMetadata({
   title,
   description,
@@ -26,7 +34,7 @@ export function generateSEOMetadata({
 }: SEOProps): Metadata {
   const siteName = 'Premium ENT Clinic'
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`
-  const baseUrl = 'https://jaywebstudio.in'
+  const baseUrl = getBaseUrl()
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : undefined
   const defaultImage = `${baseUrl}/og-image.jpg`
 
@@ -78,12 +86,14 @@ export function generateSEOMetadata({
  * Generate JSON-LD structured data for organization
  */
 export function generateOrganizationSchema() {
+  const baseUrl = getBaseUrl()
+  
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
     name: 'Premium ENT Clinic',
     description: 'Premier ENT clinic offering comprehensive ear, nose, throat, hearing, and allergy care with experienced specialists and modern facilities.',
-    url: 'https://jaywebstudio.in',
+    url: baseUrl,
     telephone: '+1-234-567-8900',
     email: 'info@entclinic.com',
     address: {
@@ -117,6 +127,8 @@ export function generateOrganizationSchema() {
  * Generate JSON-LD structured data for breadcrumbs
  */
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  const baseUrl = getBaseUrl()
+  
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -124,7 +136,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `https://jaywebstudio.in${item.url}`
+      item: `${baseUrl}${item.url}`
     }))
   }
 }
@@ -189,6 +201,8 @@ export function generateArticleSchema(article: {
     image: string
   }
 }) {
+  const baseUrl = getBaseUrl()
+  
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -207,7 +221,7 @@ export function generateArticleSchema(article: {
       name: 'Premium ENT Clinic',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://jaywebstudio.in/logo.png'
+        url: `${baseUrl}/logo.png`
       }
     }
   }

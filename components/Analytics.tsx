@@ -6,16 +6,15 @@ import { useEffect } from 'react'
  * Analytics Component
  * 
  * This component sets up Google Analytics 4 and event tracking.
- * Replace 'G-XXXXXXXXXX' with your actual Google Analytics measurement ID.
  * 
  * To enable analytics:
  * 1. Create a Google Analytics 4 property
  * 2. Get your measurement ID (starts with G-)
- * 3. Replace the placeholder below
+ * 3. Set NEXT_PUBLIC_GA_MEASUREMENT_ID environment variable
  * 4. Uncomment the script tags in the component
  */
 
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX' // Replace with your GA4 measurement ID
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-XXXXXXXXXX'
 
 export default function Analytics() {
   useEffect(() => {
