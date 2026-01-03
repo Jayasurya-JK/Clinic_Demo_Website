@@ -10,8 +10,67 @@ export const metadata: Metadata = {
 }
 
 export default function Home() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalClinic',
+    name: 'Premium ENT Clinic',
+    description: 'Premier ENT clinic offering comprehensive ear, nose, throat, hearing, and allergy care with experienced specialists and modern facilities.',
+    url: 'https://jaywebstudio.in',
+    telephone: '+1-234-567-8900',
+    email: 'info@entclinic.com',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '123 Medical Plaza, Healthcare District',
+      addressLocality: 'New York',
+      addressRegion: 'NY',
+      postalCode: '10001',
+      addressCountry: 'US'
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00'
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: 'Saturday',
+        opens: '09:00',
+        closes: '14:00'
+      }
+    ],
+    medicalSpecialty: 'Otolaryngology',
+    availableService: [
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Ear Care'
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Nose & Sinus Treatment'
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Throat & Voice Care'
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Hearing & Balance Services'
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Allergy Treatment'
+      }
+    ]
+  }
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-50 via-white to-medical-mint">
         <div className="container-custom section-padding">
