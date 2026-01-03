@@ -3,6 +3,14 @@ import Link from 'next/link'
 import CTAButton from '@/components/CTAButton'
 import ServiceCard from '@/components/ServiceCard'
 import TestimonialCard from '@/components/TestimonialCard'
+import AnimatedStats from '@/components/AnimatedStats'
+import PatientJourney from '@/components/PatientJourney'
+import SymptomChecker from '@/components/SymptomChecker'
+import FAQAccordion from '@/components/FAQAccordion'
+import TrustBadges from '@/components/TrustBadges'
+import EmergencyBanner from '@/components/EmergencyBanner'
+import FloatingContactButtons from '@/components/FloatingContactButtons'
+import { siteConfig } from '@/config/siteConfig'
 
 export const metadata: Metadata = {
   title: 'Home',
@@ -13,18 +21,18 @@ export default function Home() {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'MedicalClinic',
-    name: 'Premium ENT Clinic',
+    name: siteConfig.name,
     description: 'Premier ENT clinic offering comprehensive ear, nose, throat, hearing, and allergy care with experienced specialists and modern facilities.',
-    url: 'https://jaywebstudio.in',
-    telephone: '+1-234-567-8900',
-    email: 'info@entclinic.com',
+    url: siteConfig.url,
+    telephone: siteConfig.contact.phone,
+    email: siteConfig.contact.email,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: '123 Medical Plaza, Healthcare District',
-      addressLocality: 'New York',
-      addressRegion: 'NY',
-      postalCode: '10001',
-      addressCountry: 'US'
+      streetAddress: siteConfig.address.street,
+      addressLocality: siteConfig.address.city,
+      addressRegion: siteConfig.address.state,
+      postalCode: siteConfig.address.zip,
+      addressCountry: siteConfig.address.country
     },
     openingHoursSpecification: [
       {
@@ -67,6 +75,8 @@ export default function Home() {
 
   return (
     <>
+      <EmergencyBanner />
+      <FloatingContactButtons />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -91,20 +101,40 @@ export default function Home() {
                   View Services
                 </CTAButton>
               </div>
-              <div className="flex items-center gap-8 pt-6">
-                <div>
-                  <p className="text-3xl font-bold text-primary-600">15+</p>
-                  <p className="text-sm text-gray-600">Years Experience</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-primary-600">10k+</p>
-                  <p className="text-sm text-gray-600">Happy Patients</p>
-                </div>
-                <div>
-                  <p className="text-3xl font-bold text-primary-600">98%</p>
-                  <p className="text-sm text-gray-600">Success Rate</p>
-                </div>
-              </div>
+              <AnimatedStats
+                stats={[
+                  {
+                    value: siteConfig.stats.yearsExperience,
+                    suffix: '+',
+                    label: 'Years Experience',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    value: 10000,
+                    suffix: '+',
+                    label: 'Happy Patients',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    )
+                  },
+                  {
+                    value: siteConfig.stats.successRate,
+                    suffix: '%',
+                    label: 'Success Rate',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )
+                  }
+                ]}
+              />
             </div>
             <div className="hidden lg:block">
               <div className="relative aspect-square max-w-lg mx-auto">
@@ -265,6 +295,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Patient Journey */}
+      <PatientJourney />
+
+      {/* Symptom Checker */}
+      <SymptomChecker />
+
       {/* Testimonials */}
       <section className="section-padding bg-white">
         <div className="container-custom">
@@ -300,49 +336,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="section-padding bg-primary-50">
-        <div className="container-custom">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Board Certified</h3>
-              <p className="text-gray-600">All specialists are board-certified with extensive training</p>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Latest Technology</h3>
-              <p className="text-gray-600">State-of-the-art equipment for accurate diagnosis</p>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Flexible Hours</h3>
-              <p className="text-gray-600">Evening and weekend appointments available</p>
-            </div>
-            <div>
-              <div className="w-16 h-16 bg-white rounded-full mx-auto mb-4 flex items-center justify-center shadow-sm">
-                <svg className="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Family Care</h3>
-              <p className="text-gray-600">Treating patients of all ages, from infants to seniors</p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Trust Badges */}
+      <TrustBadges />
+
+      {/* FAQ Section */}
+      <FAQAccordion 
+        title="Frequently Asked Questions"
+        description="Get answers to common questions about our services, appointments, and care."
+      />
 
       {/* Final CTA */}
       <section className="section-padding bg-gradient-to-br from-primary-600 to-primary-700 text-white">
