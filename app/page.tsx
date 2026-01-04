@@ -162,7 +162,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
             <ServiceCard
               icon={
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -246,7 +246,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:pb-0 md:mx-0 md:px-0 scrollbar-hide">
             {[
               {
                 name: 'Dr. Sarah Johnson',
@@ -270,18 +270,20 @@ export default function Home() {
                 specialties: 'Voice Disorders, Thyroid Surgery'
               }
             ].map((doctor) => (
-              <div key={doctor.name} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover">
-                <div className="w-24 h-24 bg-primary-100 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 text-center mb-2">{doctor.name}</h3>
-                <p className="text-primary-600 font-medium text-center mb-1">{doctor.title}</p>
-                <p className="text-sm text-gray-500 text-center mb-4">{doctor.qualification}</p>
-                <div className="border-t border-gray-100 pt-4 space-y-2">
-                  <p className="text-sm text-gray-600 text-center">{doctor.experience}</p>
-                  <p className="text-sm text-gray-600 text-center font-medium">Specialties: {doctor.specialties}</p>
+              <div key={doctor.name} className="min-w-[85vw] sm:min-w-[calc(50vw-2rem)] md:min-w-0 snap-center md:snap-align-none shrink-0 pr-4 md:pr-0">
+                <div className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover h-full">
+                  <div className="w-24 h-24 bg-primary-100 rounded-full mx-auto mb-6 flex items-center justify-center">
+                    <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 text-center mb-2">{doctor.name}</h3>
+                  <p className="text-primary-600 font-medium text-center mb-1">{doctor.title}</p>
+                  <p className="text-sm text-gray-500 text-center mb-4">{doctor.qualification}</p>
+                  <div className="border-t border-gray-100 pt-4 space-y-2">
+                    <p className="text-sm text-gray-600 text-center">{doctor.experience}</p>
+                    <p className="text-sm text-gray-600 text-center font-medium">Specialties: {doctor.specialties}</p>
+                  </div>
                 </div>
               </div>
             ))}
@@ -313,7 +315,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
             <TestimonialCard
               name="John Anderson"
               condition="Chronic Sinusitis Treatment"
@@ -340,7 +342,7 @@ export default function Home() {
       <TrustBadges />
 
       {/* FAQ Section */}
-      <FAQAccordion 
+      <FAQAccordion
         title="Frequently Asked Questions"
         description="Get answers to common questions about our services, appointments, and care."
       />
