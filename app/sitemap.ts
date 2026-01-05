@@ -6,7 +6,7 @@ export const dynamic = 'force-static'
 
 export default function sitemap() {
   const baseUrl = 'https://jaywebstudio.in'
-  
+
   // Static pages
   const staticPages = [
     {
@@ -22,7 +22,7 @@ export default function sitemap() {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/services/`,
+      url: `${baseUrl}/specialities/`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.9,
@@ -73,9 +73,9 @@ export default function sitemap() {
     priority: 0.7,
   }))
 
-  // Service pages
-  const servicePages = getAllServiceSlugs().map((slug) => ({
-    url: `${baseUrl}/services/${slug}/`,
+  // Speciality pages
+  const specialityPages = getAllServiceSlugs().map((slug) => ({
+    url: `${baseUrl}/specialities/${slug}/`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
     priority: 0.8,
@@ -89,6 +89,6 @@ export default function sitemap() {
     priority: 0.6,
   }))
 
-  return [...staticPages, ...doctorPages, ...servicePages, ...blogPages]
+  return [...staticPages, ...doctorPages, ...specialityPages, ...blogPages]
 }
 

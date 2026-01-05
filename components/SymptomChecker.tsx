@@ -80,7 +80,7 @@ export default function SymptomChecker() {
       const result = calculateRecommendation(newAnswers)
       setRecommendation(result)
       setShowResults(true)
-      
+
       // Save to localStorage
       if (typeof window !== 'undefined') {
         localStorage.setItem('symptomCheckerResult', JSON.stringify({
@@ -175,142 +175,147 @@ export default function SymptomChecker() {
 
   if (showResults && recommendation) {
     return (
-      <section className="section-padding bg-white">
-        <div className="container-custom max-w-3xl">
-          <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-10">
-            {/* Success Icon */}
-            <div className="text-center mb-6">
-              <div className="w-20 h-20 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-4 animate-scaleUp">
-                <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                Your Recommended Specialist
-              </h3>
-            </div>
+      <div className="h-full flex flex-col">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Symptom Checker
+          </h2>
+          <p className="text-lg text-gray-600">
+            Based on your answers, here is our recommendation
+          </p>
+        </div>
 
-            {/* Urgency Badge */}
-            <div className={`mb-6 p-4 rounded-lg border-2 ${getUrgencyColor(recommendation.urgency)}`}>
-              <p className="font-semibold text-center">
-                {getUrgencyText(recommendation.urgency)}
-              </p>
+        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-10 flex-1">
+          {/* Success Icon */}
+          <div className="text-center mb-6">
+            <div className="w-20 h-20 bg-green-100 rounded-full mx-auto flex items-center justify-center mb-4 animate-scaleUp">
+              <svg className="w-10 h-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              Your Recommended Specialist
+            </h3>
+          </div>
 
-            {/* Recommendation */}
-            <div className="mb-6 p-6 bg-primary-50 rounded-xl">
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">
-                {recommendation.specialist}
-              </h4>
-              <p className="text-gray-700 mb-4">
-                {recommendation.reason}
-              </p>
-              <p className="text-sm text-gray-600">
-                {recommendation.additionalInfo}
-              </p>
-            </div>
-
-            {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-6">
-              <Link
-                href="/appointment/"
-                className="flex-1 bg-primary-600 text-white px-6 py-3 rounded-lg text-center font-medium hover:bg-primary-700 transition-colors duration-200"
-              >
-                Book Appointment Now
-              </Link>
-              <button
-                onClick={resetChecker}
-                className="flex-1 bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200"
-              >
-                Check Again
-              </button>
-            </div>
-
-            {/* Disclaimer */}
-            <p className="text-xs text-gray-500 text-center">
-              * This tool provides general guidance only and is not a substitute for professional medical advice. 
-              For emergencies, call 911 immediately.
+          {/* Urgency Badge */}
+          <div className={`mb-6 p-4 rounded-lg border-2 ${getUrgencyColor(recommendation.urgency)}`}>
+            <p className="font-semibold text-center">
+              {getUrgencyText(recommendation.urgency)}
             </p>
           </div>
+
+          {/* Recommendation */}
+          <div className="mb-6 p-6 bg-primary-50 rounded-xl">
+            <h4 className="text-xl font-semibold text-gray-900 mb-2">
+              {recommendation.specialist}
+            </h4>
+            <p className="text-gray-700 mb-4">
+              {recommendation.reason}
+            </p>
+            <p className="text-sm text-gray-600">
+              {recommendation.additionalInfo}
+            </p>
+          </div>
+
+          {/* Actions */}
+          <div className="flex flex-col sm:flex-row gap-4 mb-6">
+            <Link
+              href="/appointment/"
+              className="flex-1 bg-primary-600 text-white px-6 py-3 rounded-lg text-center font-medium hover:bg-primary-700 transition-colors duration-200"
+            >
+              Book Appointment Now
+            </Link>
+            <button
+              onClick={resetChecker}
+              className="flex-1 bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-200 transition-colors duration-200"
+            >
+              Check Again
+            </button>
+          </div>
+
+          {/* Disclaimer */}
+          <p className="text-xs text-gray-500 text-center">
+            * This tool provides general guidance only and is not a substitute for professional medical advice.
+            For emergencies, call 911 immediately.
+          </p>
         </div>
-      </section>
+      </div>
     )
   }
 
   const currentQuestion = questions[currentStep]
 
   return (
-    <section className="section-padding bg-gradient-to-br from-white to-primary-50">
-      <div className="container-custom max-w-3xl">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Symptom Checker
-          </h2>
-          <p className="text-lg text-gray-600">
-            Answer a few questions to find the right specialist for your needs
-          </p>
-        </div>
-
-        <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-10">
-          {/* Progress Bar */}
-          <div className="mb-8">
-            <div className="flex justify-between text-sm text-gray-600 mb-2">
-              <span>Question {currentStep + 1} of {questions.length}</span>
-              <span>{Math.round(((currentStep + 1) / questions.length) * 100)}% Complete</span>
-            </div>
-            <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-              <div
-                className="h-full bg-primary-600 transition-all duration-500 ease-out"
-                style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Question */}
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center animate-fadeInUp">
-            {currentQuestion.question}
-          </h3>
-
-          {/* Options */}
-          <div className="grid gap-4 mb-6">
-            {currentQuestion.options.map((option) => (
-              <button
-                key={option.value}
-                onClick={() => handleAnswer(currentQuestion.id, option.value, option.next)}
-                className="p-5 rounded-xl border-2 border-gray-200 hover:border-primary-500 hover:bg-primary-50 transition-all duration-200 text-left group animate-fadeInUp"
-              >
-                <span className="text-lg font-medium text-gray-900 group-hover:text-primary-600">
-                  {option.label}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          {/* Back Button */}
-          {currentStep > 0 && (
-            <button
-              onClick={() => {
-                setCurrentStep(currentStep - 1)
-                const newAnswers = { ...answers }
-                delete newAnswers[currentQuestion.id]
-                setAnswers(newAnswers)
-              }}
-              className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-2"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-              </svg>
-              Previous Question
-            </button>
-          )}
-        </div>
-
-        {/* Disclaimer */}
-        <p className="text-sm text-gray-500 text-center mt-6">
-          This symptom checker is for informational purposes only and does not constitute medical advice.
-          Always consult with a healthcare professional for proper diagnosis and treatment.
+    <div className="h-full flex flex-col">
+      <div className="text-center mb-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Symptom Checker
+        </h2>
+        <p className="text-lg text-gray-600">
+          Answer a few questions to find the right specialist for your needs
         </p>
       </div>
-    </section>
+
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 p-8 md:p-10 flex-1">
+        {/* Progress Bar */}
+        <div className="mb-8">
+          <div className="flex justify-between text-sm text-gray-600 mb-2">
+            <span>Question {currentStep + 1} of {questions.length}</span>
+            <span>{Math.round(((currentStep + 1) / questions.length) * 100)}% Complete</span>
+          </div>
+          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-primary-600 transition-all duration-500 ease-out"
+              style={{ width: `${((currentStep + 1) / questions.length) * 100}%` }}
+            />
+          </div>
+        </div>
+
+        {/* Question */}
+        <h3 className="text-2xl font-semibold text-gray-900 mb-6 text-center animate-fadeInUp">
+          {currentQuestion.question}
+        </h3>
+
+        {/* Options */}
+        <div className="grid gap-4 mb-6">
+          {currentQuestion.options.map((option) => (
+            <button
+              key={option.value}
+              onClick={() => handleAnswer(currentQuestion.id, option.value, option.next)}
+              className="p-5 rounded-xl border-2 border-gray-200 hover:border-primary-500 hover:bg-primary-50 transition-all duration-200 text-left group animate-fadeInUp"
+            >
+              <span className="text-lg font-medium text-gray-900 group-hover:text-primary-600">
+                {option.label}
+              </span>
+            </button>
+          ))}
+        </div>
+
+        {/* Back Button */}
+        {currentStep > 0 && (
+          <button
+            onClick={() => {
+              setCurrentStep(currentStep - 1)
+              const newAnswers = { ...answers }
+              delete newAnswers[currentQuestion.id]
+              setAnswers(newAnswers)
+            }}
+            className="text-gray-600 hover:text-gray-900 font-medium flex items-center gap-2"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            Previous Question
+          </button>
+        )}
+      </div>
+
+      {/* Disclaimer */}
+      <p className="text-sm text-gray-500 text-center mt-6">
+        This symptom checker is for informational purposes only and does not constitute medical advice.
+        Always consult with a healthcare professional for proper diagnosis and treatment.
+      </p>
+    </div>
   )
 }

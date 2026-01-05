@@ -42,7 +42,7 @@ export default function Privacy() {
               <li>Provide medical care and treatment</li>
               <li>Schedule appointments and send reminders</li>
               <li>Process insurance claims and billing</li>
-              <li>Communicate about your care and our services</li>
+              <li>Communicate about your care and our specialities</li>
               <li>Comply with legal and regulatory requirements</li>
             </ul>
 

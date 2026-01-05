@@ -28,22 +28,22 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li><Link href="/about/" className="text-sm hover:text-primary-400 transition-colors">About Clinic</Link></li>
-              <li><Link href="/services/" className="text-sm hover:text-primary-400 transition-colors">Our Services</Link></li>
+              <li><Link href="/specialities/" className="text-sm hover:text-primary-400 transition-colors">Our Specialities</Link></li>
               <li><Link href="/doctors/" className="text-sm hover:text-primary-400 transition-colors">Our Doctors</Link></li>
               <li><Link href="/blog/" className="text-sm hover:text-primary-400 transition-colors">Health Blog</Link></li>
               <li><Link href="/appointment/" className="text-sm hover:text-primary-400 transition-colors">Book Appointment</Link></li>
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Specialities */}
           <div>
-            <h3 className="text-white font-semibold mb-4">Services</h3>
+            <h3 className="text-white font-semibold mb-4">Specialities</h3>
             <ul className="space-y-2">
-              <li><Link href="/services/#ear-care" className="text-sm hover:text-primary-400 transition-colors">Ear Care</Link></li>
-              <li><Link href="/services/#nose-sinus" className="text-sm hover:text-primary-400 transition-colors">Nose & Sinus</Link></li>
-              <li><Link href="/services/#throat-voice" className="text-sm hover:text-primary-400 transition-colors">Throat & Voice</Link></li>
-              <li><Link href="/services/#hearing-balance" className="text-sm hover:text-primary-400 transition-colors">Hearing & Balance</Link></li>
-              <li><Link href="/services/#allergy" className="text-sm hover:text-primary-400 transition-colors">Allergy Treatment</Link></li>
+              <li><Link href="/specialities/#ear-care" className="text-sm hover:text-primary-400 transition-colors">Ear Care</Link></li>
+              <li><Link href="/specialities/#nose-sinus" className="text-sm hover:text-primary-400 transition-colors">Nose & Sinus</Link></li>
+              <li><Link href="/specialities/#throat-voice" className="text-sm hover:text-primary-400 transition-colors">Throat & Voice</Link></li>
+              <li><Link href="/specialities/#hearing-balance" className="text-sm hover:text-primary-400 transition-colors">Hearing & Balance</Link></li>
+              <li><Link href="/specialities/#allergy" className="text-sm hover:text-primary-400 transition-colors">Allergy Treatment</Link></li>
             </ul>
           </div>
 

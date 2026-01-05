@@ -1,8 +1,8 @@
 /**
- * Services Data
+ * Specialities Data
  * 
- * Contains information about all medical services offered.
- * Update this file to add, remove, or modify service information.
+ * Contains information about all medical specialities offered.
+ * Update this file to add, remove, or modify speciality information.
  */
 
 import { images } from '@/config/images'
@@ -39,7 +39,7 @@ export const services: Service[] = [
     title: 'Ear Care',
     shortDescription: 'Treatment for ear infections, hearing loss, tinnitus, and balance disorders with advanced diagnostic tools.',
     fullDescription: 'Our comprehensive ear care services address a wide range of conditions affecting the ear, from simple infections to complex hearing and balance disorders. Using state-of-the-art diagnostic equipment and evidence-based treatment approaches, we provide personalized care for patients of all ages.',
-    image: images.services.earCare,
+    image: images.specialities.earCare,
     icon: 'ear',
     whatToExpect: [
       'Thorough medical history review',
@@ -115,7 +115,7 @@ export const services: Service[] = [
     title: 'Nose & Sinus Treatment',
     shortDescription: 'Expert treatment for sinusitis, nasal congestion, allergies, and breathing difficulties.',
     fullDescription: 'We provide comprehensive care for all nasal and sinus conditions, from acute sinusitis to chronic rhinosinusitis requiring surgical intervention. Our team uses advanced imaging and minimally invasive techniques to restore normal breathing and sinus function.',
-    image: images.services.noseSinus,
+    image: images.specialities.noseSinus,
     icon: 'nose',
     whatToExpect: [
       'Complete nasal and sinus examination',
@@ -191,7 +191,7 @@ export const services: Service[] = [
     title: 'Throat & Voice Care',
     shortDescription: 'Comprehensive care for throat infections, voice disorders, and swallowing difficulties.',
     fullDescription: 'Our throat and voice care services address conditions affecting the throat, larynx, and vocal cords. From simple throat infections to complex voice disorders, we provide expert diagnosis and treatment to help you maintain or restore your vocal health.',
-    image: images.services.throatVoice,
+    image: images.specialities.throatVoice,
     icon: 'throat',
     whatToExpect: [
       'Detailed voice and swallowing assessment',
@@ -267,7 +267,7 @@ export const services: Service[] = [
     title: 'Hearing & Balance Services',
     shortDescription: 'Advanced hearing tests, hearing aid fittings, and treatment for balance disorders.',
     fullDescription: 'We provide comprehensive hearing and balance services, from diagnostic testing to hearing aid fittings and balance rehabilitation. Our audiologists and physicians work together to address all aspects of hearing health and vestibular disorders.',
-    image: images.services.hearingBalance,
+    image: images.specialities.hearingBalance,
     icon: 'hearing',
     whatToExpect: [
       'Complete hearing evaluation',
@@ -343,7 +343,7 @@ export const services: Service[] = [
     title: 'Allergy Treatment',
     shortDescription: 'Comprehensive allergy testing and immunotherapy to manage seasonal and chronic allergies.',
     fullDescription: 'Our allergy services help identify and treat environmental and seasonal allergies that affect your sinuses and respiratory system. We offer comprehensive testing and multiple treatment options including immunotherapy to provide long-term relief.',
-    image: images.services.allergy,
+    image: images.specialities.allergy,
     icon: 'allergy',
     whatToExpect: [
       'Discussion of allergy symptoms and triggers',
@@ -419,7 +419,7 @@ export const services: Service[] = [
     title: 'ENT Procedures',
     shortDescription: 'Minimally invasive surgical procedures performed with precision and care.',
     fullDescription: 'We offer a full range of ENT surgical procedures using the latest minimally invasive techniques. Our experienced surgeons perform both in-office procedures and operating room surgeries with a focus on patient safety, comfort, and optimal outcomes.',
-    image: images.services.procedures,
+    image: images.specialities.procedures,
     icon: 'procedures',
     whatToExpect: [
       'Thorough pre-operative evaluation',
@@ -494,25 +494,25 @@ export const services: Service[] = [
 ]
 
 /**
- * Get service by slug
+ * Get speciality by slug
  */
 export function getServiceBySlug(slug: string): Service | undefined {
   return services.find(service => service.slug === slug)
 }
 
 /**
- * Get all service slugs for static generation
+ * Get all speciality slugs for static generation
  */
 export function getAllServiceSlugs(): string[] {
   return services.map(service => service.slug)
 }
 
 /**
- * Get related services
+ * Get related specialities
  */
 export function getRelatedServices(serviceSlug: string): Service[] {
   const service = getServiceBySlug(serviceSlug)
   if (!service) return []
-  
+
   return services.filter(s => service.relatedServices.includes(s.slug))
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'Terms of service for Premium ENT Clinic - Please read these terms before using our services.',
+  description: 'Terms of service for Premium ENT Clinic - Please read these terms before choosing our care.',
 }
 
 export default function Terms() {
@@ -24,7 +24,7 @@ export default function Terms() {
           <div className="prose prose-lg max-w-none">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Acceptance of Terms</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              By accessing and using the services of Premium ENT Clinic, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.
+              By accessing and using the medical care of Premium ENT Clinic, you accept and agree to be bound by these Terms of Service. If you do not agree to these terms, please do not continue with our care.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Appointment Policy</h2>
@@ -55,7 +55,7 @@ export default function Terms() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Emergency Care</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              Our clinic does not provide emergency medical services. If you are experiencing a medical emergency, call 911 or visit the nearest emergency room immediately.
+              Our clinic does not provide emergency medical care. If you are experiencing a medical emergency, call 911 or visit the nearest emergency room immediately.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Limitation of Liability</h2>
@@ -65,7 +65,7 @@ export default function Terms() {
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Changes to Terms</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              We reserve the right to modify these terms at any time. Continued use of our services after changes constitutes acceptance of the modified terms.
+              We reserve the right to modify these terms at any time. Continued use of our medical care after changes constitutes acceptance of the modified terms.
             </p>
 
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact Information</h2>

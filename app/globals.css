@@ -158,4 +158,131 @@
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     transform: translateY(-0.25rem);
   }
+
+
+  /* Patient Journey Timeline - Cycling Step Animations */
+  @keyframes highlightStep1 {
+
+    0%,
+    10% {
+      background-color: rgb(var(--color-primary-600));
+      border-color: rgb(var(--color-primary-600));
+      transform: scale(1.1);
+    }
+
+    20%,
+    100% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+  }
+
+  @keyframes highlightStep2 {
+
+    0%,
+    20% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+
+    30%,
+    40% {
+      background-color: rgb(var(--color-primary-600));
+      border-color: rgb(var(--color-primary-600));
+      transform: scale(1.1);
+    }
+
+    50%,
+    100% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+  }
+
+  @keyframes highlightStep3 {
+
+    0%,
+    40% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+
+    50%,
+    60% {
+      background-color: rgb(var(--color-primary-600));
+      border-color: rgb(var(--color-primary-600));
+      transform: scale(1.1);
+    }
+
+    70%,
+    100% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+  }
+
+  @keyframes highlightStep4 {
+
+    0%,
+    60% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+
+    70%,
+    80% {
+      background-color: rgb(var(--color-primary-600));
+      border-color: rgb(var(--color-primary-600));
+      transform: scale(1.1);
+    }
+
+    90%,
+    100% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+  }
+
+  @keyframes highlightStep5 {
+
+    0%,
+    80% {
+      background-color: white;
+      border-color: rgb(var(--color-primary-200));
+      transform: scale(1);
+    }
+
+    90%,
+    100% {
+      background-color: rgb(var(--color-primary-600));
+      border-color: rgb(var(--color-primary-600));
+      transform: scale(1.1);
+    }
+  }
+
+  /* Marquee Animation for Awards */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 25s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
 }

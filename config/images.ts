@@ -21,8 +21,8 @@ export const images = {
     drEmilyWilliams: 'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=400&h=400&fit=crop',
   },
 
-  // Service Images
-  services: {
+  // Speciality Images
+  specialities: {
     earCare: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=400&fit=crop',
     noseSinus: 'https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&h=400&fit=crop',
     throatVoice: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=600&h=400&fit=crop',
@@ -61,7 +61,7 @@ export const images = {
   // Default/Fallback Images
   placeholder: {
     doctor: 'https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop',
-    service: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&h=400&fit=crop',
+    speciality: 'https://images.unsplash.com/photo-1551076805-e1869033e561?w=600&h=400&fit=crop',
     blog: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop',
   },
 }
@@ -69,13 +69,13 @@ export const images = {
 /**
  * Helper function to get Open Graph image
  */
-export function getOGImage(type: 'doctor' | 'service' | 'blog', identifier?: string): string {
+export function getOGImage(type: 'doctor' | 'speciality' | 'blog', identifier?: string): string {
   // Return appropriate OG image based on type
   switch (type) {
     case 'doctor':
       return images.doctors.drSarahJohnson
-    case 'service':
-      return images.services.earCare
+    case 'speciality':
+      return images.specialities.earCare
     case 'blog':
       return images.blog.sinusTreatment
     default:

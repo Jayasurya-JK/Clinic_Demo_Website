@@ -9,7 +9,7 @@ export const siteConfig = {
   name: 'Premium ENT Clinic',
   description: 'Premier ENT clinic offering comprehensive ear, nose, throat, hearing, and allergy care with experienced specialists and modern facilities.',
   url: 'https://jaywebstudio.in',
-  
+
   // Contact Information
   contact: {
     phone: '+1-234-567-8900',
@@ -51,7 +51,7 @@ export const siteConfig = {
 
   // Statistics
   stats: {
-    yearsExperience: 15,
+    yearsExperience: 5,
     happyPatients: '10,000',
     successRate: 98,
     specialists: 3,
@@ -63,6 +63,6 @@ export const siteConfig = {
     latestTechnology: true,
     flexibleHours: true,
     familyCare: true,
-    emergencyServices: false,
+    emergencyCare: false,
   },
 }
