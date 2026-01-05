@@ -9,9 +9,9 @@ interface CTAButtonProps {
 
 export default function CTAButton({ href, children, variant = 'primary', className = '' }: CTAButtonProps) {
   const baseClasses = variant === 'primary' ? 'btn-primary' : 'btn-secondary'
-  
+
   return (
-    <Link href={href} className={`inline-block ${baseClasses} ${className}`}>
+    <Link href={href} className={`inline-flex items-center justify-center w-full md:w-auto ${baseClasses} ${className}`}>
       {children}
     </Link>
   )

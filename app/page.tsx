@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import CTAButton from '@/components/CTAButton'
 import ServiceCard from '@/components/ServiceCard'
 import TestimonialCard from '@/components/TestimonialCard'
@@ -10,6 +11,7 @@ import FAQAccordion from '@/components/FAQAccordion'
 import TrustBadges from '@/components/TrustBadges'
 import EmergencyBanner from '@/components/EmergencyBanner'
 import FloatingContactButtons from '@/components/FloatingContactButtons'
+import MobileNav from '@/components/MobileNav'
 import { siteConfig } from '@/config/siteConfig'
 
 export const metadata: Metadata = {
@@ -76,29 +78,29 @@ export default function Home() {
   return (
     <>
       <EmergencyBanner />
-      <FloatingContactButtons />
+      {/* <FloatingContactButtons /> - Removed to prevent overlap */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-50 via-white to-medical-mint">
-        <div className="container-custom section-padding">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
+        <div className="container-custom py-12 md:py-16 lg:py-20">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="space-y-4 md:space-y-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
                 Expert Care for Your
                 <span className="text-primary-600"> Ear, Nose & Throat</span>
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed">
                 Experience compassionate, comprehensive ENT care from board-certified specialists using the latest medical technology in a comfortable, patient-centered environment.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              <div className="flex flex-col md:flex-row gap-4">
                 <CTAButton href="/appointment/">
                   Book Appointment
                 </CTAButton>
                 <CTAButton href="/services/" variant="secondary">
-                  View Services
+                  Our Specialties
                 </CTAButton>
               </div>
               <AnimatedStats
@@ -151,24 +153,31 @@ export default function Home() {
       </section>
 
       {/* Services Overview */}
-      <section className="section-padding bg-white">
+      <section className="py-12 md:py-16 lg:py-20 bg-white">
         <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Comprehensive ENT Services
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
+              Comprehensive ENT Specialties
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base md:text-lg text-gray-600">
               From routine checkups to advanced procedures, we provide complete care for all ear, nose, and throat conditions.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* Asymmetric Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            {/* Row 1 - Featured Large Card */}
             <ServiceCard
+              className="md:col-span-2 lg:col-span-1"
+              featured={true}
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>
+                <Image
+                  src="/images/1.png"
+                  alt="Ear Care Icon"
+                  width={48}
+                  height={48}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="Ear Care"
               description="Treatment for ear infections, hearing loss, tinnitus, and balance disorders with advanced diagnostic tools."
@@ -176,9 +185,13 @@ export default function Home() {
             />
             <ServiceCard
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
+                <Image
+                  src="/images/2.png"
+                  alt="Nose & Sinus Icon"
+                  width={40}
+                  height={40}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="Nose & Sinus"
               description="Expert treatment for sinusitis, nasal congestion, allergies, and breathing difficulties."
@@ -186,19 +199,29 @@ export default function Home() {
             />
             <ServiceCard
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                </svg>
+                <Image
+                  src="/images/3.png"
+                  alt="Throat & Voice Icon"
+                  width={40}
+                  height={40}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="Throat & Voice"
               description="Comprehensive care for throat infections, voice disorders, and swallowing difficulties."
               href="/services/#throat-voice"
             />
+
+            {/* Row 2 */}
             <ServiceCard
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3" />
-                </svg>
+                <Image
+                  src="/images/4.png"
+                  alt="Hearing & Balance Icon"
+                  width={40}
+                  height={40}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="Hearing & Balance"
               description="Advanced hearing tests, hearing aid fittings, and treatment for balance disorders."
@@ -206,9 +229,13 @@ export default function Home() {
             />
             <ServiceCard
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
-                </svg>
+                <Image
+                  src="/images/5.png"
+                  alt="Allergy Treatment Icon"
+                  width={40}
+                  height={40}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="Allergy Treatment"
               description="Comprehensive allergy testing and immunotherapy to manage seasonal and chronic allergies."
@@ -216,9 +243,13 @@ export default function Home() {
             />
             <ServiceCard
               icon={
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                </svg>
+                <Image
+                  src="/images/6.png"
+                  alt="ENT Procedures Icon"
+                  width={40}
+                  height={40}
+                  className="object-contain filter brightness-0 saturate-100 group-hover:brightness-0 group-hover:invert transition-all duration-500"
+                />
               }
               title="ENT Procedures"
               description="Minimally invasive surgical procedures performed with precision and care."
@@ -226,7 +257,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-10 md:mt-14">
             <CTAButton href="/services/">
               View All Services
             </CTAButton>
@@ -235,59 +266,143 @@ export default function Home() {
       </section>
 
       {/* Doctor Highlights */}
-      <section className="section-padding bg-gray-50">
+      <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
         <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Meet Our Specialists
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base md:text-lg text-gray-600">
               Our board-certified ENT specialists bring decades of combined experience and are committed to providing exceptional care.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Dr. Sarah Johnson',
-                title: 'ENT Specialist & Surgeon',
-                qualification: 'MD, FACS',
-                experience: '15+ years experience',
-                specialties: 'Sinus Surgery, Rhinoplasty'
-              },
-              {
-                name: 'Dr. Michael Chen',
-                title: 'Pediatric ENT Specialist',
-                qualification: 'MD, Board Certified',
-                experience: '12+ years experience',
-                specialties: 'Pediatric Care, Hearing Disorders'
-              },
-              {
-                name: 'Dr. Emily Williams',
-                title: 'Head & Neck Surgeon',
-                qualification: 'MD, PhD',
-                experience: '18+ years experience',
-                specialties: 'Voice Disorders, Thyroid Surgery'
-              }
-            ].map((doctor) => (
-              <div key={doctor.name} className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 card-hover">
-                <div className="w-24 h-24 bg-primary-100 rounded-full mx-auto mb-6 flex items-center justify-center">
-                  <svg className="w-12 h-12 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 max-w-sm md:max-w-4xl mx-auto relative mb-24 md:mb-0">
+            {/* Floating Experience Badge */}
+            <div className="absolute top-6 right-6 bg-white rounded-xl shadow-lg p-3 text-center border border-gray-100 z-10 hidden md:block">
+              <span className="block text-3xl font-bold text-primary-600">5+</span>
+              <span className="text-xs text-gray-500 font-medium">Years Experience</span>
+            </div>
+
+            <div className="grid md:grid-cols-12 gap-0">
+              {/* Doctor Image & Quick Stats - Left Side */}
+              <div className="md:col-span-4 bg-primary-50 p-6 md:p-8 flex flex-col items-center text-center relative overflow-hidden">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 bg-white rounded-full flex items-center justify-center mb-8 shadow-md z-10 mx-auto">
+                  <svg className="w-24 h-24 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 text-center mb-2">{doctor.name}</h3>
-                <p className="text-primary-600 font-medium text-center mb-1">{doctor.title}</p>
-                <p className="text-sm text-gray-500 text-center mb-4">{doctor.qualification}</p>
-                <div className="border-t border-gray-100 pt-4 space-y-2">
-                  <p className="text-sm text-gray-600 text-center">{doctor.experience}</p>
-                  <p className="text-sm text-gray-600 text-center font-medium">Specialties: {doctor.specialties}</p>
+
+                {/* Classic Vertical Timeline Graph - Now in Left Column */}
+                <div className="w-full mt-6">
+                  <h4 className="text-sm font-bold text-gray-900 mb-6 text-left">Experience Timeline</h4>
+
+                  <div className="relative pl-8">
+                    {/* Vertical Timeline Line */}
+                    <div className="absolute left-[11px] top-2 bottom-2 w-0.5 bg-gradient-to-b from-primary-500 via-primary-400 to-gray-300"></div>
+
+                    {/* Timeline Items */}
+                    <div className="space-y-6">
+                      {/* 2018 Entry */}
+                      <div className="relative">
+                        {/* Timeline Dot */}
+                        <div className="absolute -left-8 top-1 w-6 h-6 rounded-full bg-primary-600 border-4 border-white shadow-md flex items-center justify-center">
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="bg-white/50 rounded-lg p-3 text-left">
+                          <span className="inline-block px-2 py-0.5 bg-primary-600 text-white rounded text-xs font-bold mb-2">2018</span>
+                          <h5 className="font-bold text-gray-900 text-sm mb-1">MS ENT</h5>
+                          <p className="text-xs text-gray-700 mb-0.5">JIPMER Pondicherry</p>
+                          <p className="text-xs text-gray-500 italic">Prestigious Medical Institution</p>
+                        </div>
+                      </div>
+
+                      {/* 2012 Entry */}
+                      <div className="relative">
+                        {/* Timeline Dot */}
+                        <div className="absolute -left-8 top-1 w-6 h-6 rounded-full bg-gray-400 border-4 border-white shadow-md flex items-center justify-center">
+                          <div className="w-2 h-2 bg-white rounded-full"></div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="bg-white/50 rounded-lg p-3 text-left">
+                          <span className="inline-block px-2 py-0.5 bg-gray-600 text-white rounded text-xs font-bold mb-2">2012</span>
+                          <h5 className="font-bold text-gray-900 text-sm mb-1">MBBS</h5>
+                          <p className="text-xs text-gray-700 mb-0.5">Thiruvanamalai Govt Medical College</p>
+                          <p className="text-xs text-gray-500 italic">Foundational Medical Training</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            ))}
+
+              {/* Detailed Info - Right Side */}
+              <div className="md:col-span-8 p-6 md:p-12 pb-0 md:pb-12">
+                <div className="mb-6 md:mb-8">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Dr. Thirishakamalai</h3>
+                  <p className="text-lg md:text-xl text-primary-600 font-medium mb-4">MBBS, MS ENT</p>
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                    Dedicated Board-Certified Otolaryngologist with a passion for providing comprehensive ENT care. committed to patient well-being and advanced treatment methodologies.
+                  </p>
+                </div>
+
+                <div className="border-t border-gray-100 pt-6 md:pt-8 mb-6 md:mb-8">
+                  <h4 className="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <svg className="w-5 h-5 text-accent-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l9-5-9-5-9 5 9 5z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+                    </svg>
+                    Areas of Expertise
+                  </h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-y-3 gap-x-4">
+                    {[
+                      "Sinus surgery & rhinoplasty",
+                      "Voice disorders",
+                      "Pediatric ENT",
+                      "Hearing restoration",
+                      "Head & neck surgery",
+                      "Allergy management"
+                    ].map((item) => (
+                      <div key={item} className="flex items-center text-gray-700 text-sm md:text-base">
+                        <svg className="w-4 h-4 md:w-5 md:h-5 text-primary-500 mr-2 md:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* DESKTOP Action Menu (Hidden on Mobile) */}
+                <div className="hidden md:flex gap-4 mt-8 pt-8 border-t border-gray-100">
+                  <a href="tel:+1234567890" className="flex-1 flex items-center justify-center py-3 border border-gray-200 rounded-lg text-primary-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap">
+                    <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                    Call Clinic
+                  </a>
+                  <a href="#" className="flex-1 flex items-center justify-center py-3 border border-gray-200 rounded-lg text-primary-600 font-semibold hover:bg-gray-50 transition-colors whitespace-nowrap">
+                    <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    WhatsApp
+                  </a>
+                  <a href="/appointment/" className="flex-1 flex items-center justify-center py-3 bg-primary-600 text-white rounded-lg font-semibold hover:bg-primary-700 transition-colors whitespace-nowrap">
+                    <svg className="w-5 h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Book Appointment
+                  </a>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-12">
             <CTAButton href="/doctors/">
               Meet All Doctors
             </CTAButton>
@@ -302,18 +417,18 @@ export default function Home() {
       <SymptomChecker />
 
       {/* Testimonials */}
-      <section className="section-padding bg-white">
+      <section className="py-12 md:py-16 lg:py-20 bg-white">
         <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 px-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 md:mb-4">
               Patient Testimonials
             </h2>
-            <p className="text-lg text-gray-600">
+            <p className="text-base md:text-lg text-gray-600">
               Hear from our patients about their experience with our care.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <TestimonialCard
               name="John Anderson"
               condition="Chronic Sinusitis Treatment"
@@ -340,21 +455,21 @@ export default function Home() {
       <TrustBadges />
 
       {/* FAQ Section */}
-      <FAQAccordion 
+      <FAQAccordion
         title="Frequently Asked Questions"
         description="Get answers to common questions about our services, appointments, and care."
       />
 
       {/* Final CTA */}
-      <section className="section-padding bg-gradient-to-br from-primary-600 to-primary-700 text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-primary-600 to-primary-700 text-white">
+        <div className="container-custom text-center px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 md:mb-6">
             Ready to Take Control of Your ENT Health?
           </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-primary-100 mb-6 md:mb-8 max-w-2xl mx-auto">
             Schedule your appointment today and experience compassionate, expert care from our team of specialists.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
             <Link href="/appointment/" className="bg-white text-primary-600 px-8 py-4 rounded-lg text-lg font-medium hover:bg-gray-100 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-primary-600">
               Book Appointment Now
             </Link>

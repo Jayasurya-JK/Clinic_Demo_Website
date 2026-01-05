@@ -55,7 +55,7 @@ export default function AnimatedStats({ stats, duration = 2000 }: AnimatedStatsP
         const interval = setInterval(() => {
           const elapsed = Date.now() - startTime
           const progress = Math.min(elapsed / duration, 1)
-          
+
           // Easing function (ease-out)
           const easeOut = 1 - Math.pow(1 - progress, 3)
           const currentValue = Math.floor(targetValue * easeOut)
@@ -85,9 +85,8 @@ export default function AnimatedStats({ stats, duration = 2000 }: AnimatedStatsP
       {stats.map((stat, index) => (
         <div
           key={index}
-          className={`transition-all duration-700 ${
-            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-          }`}
+          className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
           style={{ transitionDelay: `${index * 100}ms` }}
         >
           <div className="flex items-center gap-3">
